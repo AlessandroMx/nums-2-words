@@ -11,6 +11,54 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
+    <script>
+        
+        let conv2num = function (num) {
+            
+            let SPECIAL_VALUES = { 
+                0: "cero", 1: "uno", 2: "dos", 3: "tres", 4: "cuatro", 
+                5: "cinco", 6: "seis", 7: "siete", 8: "ocho", 9: "nueve", 
+                10: "diez", 11: "once", 12: "doce", 13: "trece", 14: "catorce", 
+                15: "quince", 16: "dieciseis", 17: "diecisiete", 18: "dieciocho", 
+                19: "diecinueve", 20: "veinte", 21: "veintiuno", 22: "veintidos", 
+                23: "veintitres", 24: "veinticuatro", 25: "veinticinco", 26: "veintiseis", 
+                27: "veintisiete", 28: "veintiocho", 29: "veintinueve" };
+            
+            let TENS = {
+                2: "veinte", 3: "treinta", 4: "cuarenta", 5: "cincuenta", 
+                6: "sesenta", 7: "setenta", 8: "ochenta", 9: "noventa"
+            };
+
+            let HUNDRED = {
+                1: "ciento", 2: "doscientos", 3: "trescientos", 4: "cuatrocientos", 
+                5: "quinientos", 6: "seiscientos", 7: "setecientos", 8: "ochocientos", 
+                9: "novecientos"
+            };
+
+            let text = "";
+            let numDivHundred = Math.floor(num / 100);
+            let numRemHundred = num % 100;
+            let numDivTens = Math.floor(numRemHundred / 10);
+            let numRemTens = Math.floor(numRemHundred % 10);
+            if (numDivHundred >= 1) {
+                text = (numDivHundred == 1 && numRemHundred == 0) ? 'cien ' : HUNDRED[numDivHundred] + " ";
+            }
+            if (numRemHundred < 30) {
+                text = text + SPECIAL_VALUES[numRemHundred] + " ";
+            }
+            if (numRemHundred >= 30) {
+                text = text + TENS[numDivTens] + " y " + SPECIAL_VALUES[numRemTens] + " ";
+            }
+            return text;
+        };
+
+        $(document).ready(() => {
+            $('#button-conv').click(() => {
+                let num = $('#input-num').val();
+                UIkit.modal.alert('Resultado: ' + conv2num(parseInt(num)));
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -37,16 +85,17 @@
                         <div class="uk-container">
                             <form class="uk-form-horizontal">
                                 <legend class="uk-legend">Ingrese un número entero entre el 0 y 999 (inclusivo).</legend>
-                                <div class="uk-margin">
-                                    <input class="uk-input" type="number" placeholder="Ingrese un número de hasta tres dígitos...">
+                                <div class="uk-grid uk-margin">
+                                    <div class="uk-width-2-3">
+                                        <input id="input-num" class="uk-input" type="number" placeholder="Ingrese un número de hasta tres dígitos...">
+                                    </div>
+                                    <div class="uk-width-1-3">
+                                        <button class="uk-button uk-button-secondary" type="button" id="button-conv">
+                                            <span uk-icon="bolt"></span>&ensp;¡Convertir número!
+                                        </button>
+                                    </div>
                                 </div>
-                                <button class="uk-button uk-button-secondary" type="button" id="button-conv">
-                                    <span uk-icon="bolt"></span>&ensp;¡Convertir número!
-                                </button>
                             </form>
-                        </div>
-                        <div class="uk-container uk-margin-top" id="canvas-container">
-                            <!-- <canvas id="canvas" width="640" height="420"></canvas> -->
                         </div>
                     </div>
                 </div>
