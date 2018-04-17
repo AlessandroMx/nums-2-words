@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Números a letras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/css/uikit.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+    <div class="uk-container-large uk-width-1-1" uk-height-viewport>
+        <div class="uk-grid uk-height-1-1">
+            <div class="uk-width-1-4" id="menu-panel">
+                <div class="uk-container">
+                    <h1 class="uk-heading-primary uk-text-bold uk-margin-top">Números a letras</h1>
+                    <ul class="uk-nav uk-nav-default">
+                        <li class="uk-nav-header">Men&uacute;</li>
+                        <li class="uk-nav-divider"></li>
+                        <li id="menu-play">
+                            <a href="#">
+                                <span uk-icon="play-circle"></span>&ensp;Iniciar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uk-width-3-4 uk-padding-remove" id="main-panel">
+                <div class="uk-container-large uk-animation-slide-top uk-background-muted uk-height-1-1" id="play">
+                    <div class="uk-container">
+                        <h1 class="uk-heading-bullet uk-margin-top">Iniciar aplicaci&oacute;n</h1>
+                        <div class="uk-container">
+                            <form class="uk-form-horizontal">
+                                <legend class="uk-legend">Ingrese un número entero entre el 0 y 999 (inclusivo).</legend>
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="number" placeholder="Ingrese un número de hasta tres dígitos...">
+                                </div>
+                                <button class="uk-button uk-button-secondary" type="button" id="button-conv">
+                                    <span uk-icon="bolt"></span>&ensp;¡Convertir número!
+                                </button>
+                            </form>
+                        </div>
+                        <div class="uk-container uk-margin-top" id="canvas-container">
+                            <!-- <canvas id="canvas" width="640" height="420"></canvas> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
